@@ -1,0 +1,24 @@
+# Auxiliary files
+*.aux
+*.bbl
+*.blg
+*.idx
+*.ind
+*.lof
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.fls
+*.log
+*.fdb_latexmk
+*.snm
+*.synctex
+*.synctex.gz
+*.nav
+*.vrb
