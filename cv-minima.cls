@@ -61,7 +61,9 @@
 \setlength{\tabcolsep}{0in}
 
 %% Customize the \section command
-\titleformat{\section}{\vspace{-8pt}\large\scshape}{}{0}{}[\titlerule]
+\titleformat{\section}{\large\scshape}{}{0}{}[\titlerule]
+%% Resize the \section command spacings
+\titlespacing{\section}{0pt}{*1}{*1}
 
 %% Getting \emph back to normal
 \normalem
@@ -88,7 +90,7 @@
 \def\telegramIcon{\faIcon{telegram}}
 \def\githubIcon{\faIcon{github}}
 
-\def\iconColor{black}
+\def\iconColor{darkgray}
 
 \newcommand{\name}[1]{%
   \def\@name{{\huge\scshape\textbf{#1}}}%
@@ -114,13 +116,12 @@
 
 \newcommand{\cvHeader}{%
   \begin{center}%
-    \small%
-    \vbox{\@name}\smallskip%
-    \vbox{\@location}\smallskip%
+    \vbox{\@name}\vspace{2pt}%
+    \vbox{\@location}\vspace{2pt}%
 
     \mbox{\@phone}\quad%
     \mbox{\@mail}\quad%
-    \mbox{\@linkedin}\smallskip%
+    \mbox{\@linkedin}\vspace{1pt}%
 
     \mbox{\@telegram}\quad%
     \mbox{\@github}\quad%
@@ -132,5 +133,5 @@
 }
 
 \newcommand{\cvFooter}[1][\today]{%
-  \begin{center}\footnotesize\emph{Updated on \today}\end{center}%
+  \centerline{\small\emph{Updated on \today}}%
 }
