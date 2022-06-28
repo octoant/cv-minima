@@ -90,29 +90,34 @@
 \def\telegramIcon{\faIcon{telegram}}
 \def\githubIcon{\faIcon{github}}
 
-\def\iconColor{darkgray}
+\def\@iconColor{black}
+
+\newcommand{\iconColor}[1]{%
+  \def\@iconColor{#1}%
+}
 
 \newcommand{\name}[1]{%
   \def\@name{{\huge\scshape\textbf{#1}}}%
 }
 \newcommand{\location}[1]{%
-  \def\@location{\textcolor{\iconColor}{\locationIcon} #1}%
+  \def\@location{\textcolor{\@iconColor}{\locationIcon} #1}%
 }
 \newcommand{\phone}[1]{%
-  \def\@phone{\textcolor{\iconColor}{\phoneIcon} #1}%
+  \def\@phone{\textcolor{\@iconColor}{\phoneIcon} #1}%
 }
 \newcommand{\mail}[1]{%
-  \def\@mail{\textcolor{\iconColor}{\mailIcon} \href{mailto:#1}{#1}}%
+  \def\@mail{\textcolor{\@iconColor}{\mailIcon} \href{mailto:#1}{#1}}%
 }
 \newcommand{\linkedin}[1]{%
-  \def\@linkedin{\textcolor{\iconColor}{\linkedinIcon} \href{https://linkedin.com/in/#1}{\underline{linkedin.com/in/#1}}}%
+  \def\@linkedin{\textcolor{\@iconColor}{\linkedinIcon} \href{https://linkedin.com/in/#1}{\underline{linkedin.com/in/#1}}}%
 }
 \newcommand{\telegram}[1]{%
-  \def\@telegram{\textcolor{\iconColor}{\telegramIcon} \href{https://telegram.me/#1}{\underline{telegram.me/#1}}}%
+  \def\@telegram{\textcolor{\@iconColor}{\telegramIcon} \href{https://telegram.me/#1}{\underline{telegram.me/#1}}}%
 }
 \newcommand{\github}[1]{%
-  \def\@github{\textcolor{\iconColor}{\githubIcon} \href{https://github.com/#1}{\underline{github.com/#1}}}%
+  \def\@github{\textcolor{\@iconColor}{\githubIcon} \href{https://github.com/#1}{\underline{github.com/#1}}}%
 }
+
 
 \newcommand{\cvHeader}{%
   \begin{center}%
