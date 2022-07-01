@@ -124,10 +124,10 @@
 }
 
 \newcommand{\cvHeading}[2][\undefined]{%
-  \ifdefined#1%
-    \section*{\parbox[b]{12pt}{\centerline{\normalsize\textcolor{\iconColor}{#1}}} #2}%
-  \else%
+  \ifx#1\undefined%
     \section*{#2}%
+  \else%
+    \section*{\parbox[b]{12pt}{\centerline{\normalsize\textcolor{\iconColor}{#1}}} #2}%
   \fi%
 }
 
