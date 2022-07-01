@@ -80,6 +80,10 @@
 
 \def\iconColor{black}
 
+\newcommand{\setIconColor}[1]{%
+  \def\iconColor{#1}%
+}
+
 \newcommand{\name}[1]{%
   \def\@name{\huge\scshape\textbf{#1}}%
 }
@@ -93,7 +97,7 @@
   \def\@mail{\textcolor{\iconColor}{\mailIcon} \href{mailto:#1}{#1}}%
 }
 \newcommand{\linkedin}[1]{%
-  \def\@linkedin{\textcolor{\iconColor}{\linkedinIcon} \href{https://www.linkedin.com/in/#1}{\underline{linkedin.com/in/#1}}}%
+  \def\@linkedin{\textcolor{\iconColor}{\linkedinIcon} \href{https://linkedin.com/in/#1}{\underline{linkedin.com/in/#1}}}%
 }
 \newcommand{\telegram}[1]{%
   \def\@telegram{\textcolor{\iconColor}{\telegramIcon} \href{https://telegram.me/#1}{\underline{telegram.me/#1}}}%
@@ -117,4 +121,24 @@
     \mbox{\@telegram} \space%
     \mbox{\@github}%
   \end{center}%
+}
+
+\newcommand{\cvHeading}[2][\undefined]{%
+  \ifx#1\undefined%
+    \section*{#2}%
+  \else%
+    \section*{\parbox[b]{12pt}{\centerline{\normalsize\textcolor{\iconColor}{#1}}} #2}%
+  \fi%
+}
+
+\newcommand{\cvSubHeading}[4]{%
+  % TODO: implement
+}
+
+\newcommand{\cvProjectHeading}[3]{%
+  % TODO: implement
+}
+
+\newcommand{\cvFooter}[1][\today]{
+  % TODO: \centerline{\small\emph{Updated on #1}}
 }
