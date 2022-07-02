@@ -42,6 +42,7 @@
 \fancyhf{}                              % clear all header and footer
 \setlength{\footskip}{4.8pt}
 \setlength{\parindent}{0pt}             % clear all indentation
+\setlength{\tabcolsep}{0pt}
 
 %% Adjust page margins
 \addtolength{\oddsidemargin}{-0.5in}
@@ -71,13 +72,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Additional Macros & Commands Definitions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\def\locationIcon{\faIcon{map-marker-alt}}
-\def\phoneIcon{\faIcon{phone-alt}}
-\def\mailIcon{\faIcon{envelope}}
-\def\linkedinIcon{\faIcon{linkedin}}
-\def\telegramIcon{\faIcon{telegram}}
-\def\githubIcon{\faIcon{github}}
-
 \def\iconColor{black}
 
 \newcommand{\setIconColor}[1]{%
@@ -88,22 +82,22 @@
   \def\@name{\huge\scshape\textbf{#1}}%
 }
 \newcommand{\location}[1]{%
-  \def\@location{\textcolor{\iconColor}{\locationIcon} #1}%
+  \def\@location{\textcolor{\iconColor}{\faIcon{map-marker-alt}} #1}%
 }
 \newcommand{\phone}[1]{%
-  \def\@phone{\textcolor{\iconColor}{\phoneIcon} #1}%
+  \def\@phone{\textcolor{\iconColor}{\faIcon{phone-alt}} #1}%
 }
 \newcommand{\mail}[1]{%
-  \def\@mail{\textcolor{\iconColor}{\mailIcon} \href{mailto:#1}{#1}}%
+  \def\@mail{\textcolor{\iconColor}{\faIcon{envelope}} \href{mailto:#1}{#1}}%
 }
 \newcommand{\linkedin}[1]{%
-  \def\@linkedin{\textcolor{\iconColor}{\linkedinIcon} \href{https://linkedin.com/in/#1}{\underline{linkedin.com/in/#1}}}%
+  \def\@linkedin{\textcolor{\iconColor}{\faIcon{linkedin}} \href{https://linkedin.com/in/#1}{\underline{linkedin.com/in/#1}}}%
 }
 \newcommand{\telegram}[1]{%
-  \def\@telegram{\textcolor{\iconColor}{\telegramIcon} \href{https://telegram.me/#1}{\underline{telegram.me/#1}}}%
+  \def\@telegram{\textcolor{\iconColor}{\faIcon{telegram}} \href{https://telegram.me/#1}{\underline{telegram.me/#1}}}%
 }
 \newcommand{\github}[1]{%
-  \def\@github{\textcolor{\iconColor}{\githubIcon} \href{https://github.com/#1}{\underline{github.com/#1}}}%
+  \def\@github{\textcolor{\iconColor}{\faIcon{github}} \href{https://github.com/#1}{\underline{github.com/#1}}}%
 }
 \newcommand{\contacts}[5]{%
   \phone{#1} \mail{#2} \linkedin{#3} \telegram{#4} \github{#5}%
@@ -131,14 +125,42 @@
   \fi%
 }
 
-\newcommand{\cvSubHeading}[4]{%
-  % TODO: implement
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Special Environments Definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{cvHeadingList}{
+  \begin{itemize}
+}{
+  \end{itemize}
 }
 
-\newcommand{\cvProjectHeading}[3]{%
-  % TODO: implement
+\newenvironment{cvList}{
+  \begin{itemize}
+}{
+  \end{itemize}
 }
 
-\newcommand{\cvFooter}[1][\today]{
-  % TODO: \centerline{\small\emph{Updated on #1}}
-}
+% \newcommand{\textsize}[2]{%
+%   {\fontsize{#1}{\baselineskip}\selectfont{#2}}%
+% }
+
+% \newcommand{\cvSubHeading}[4]{%
+%   \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%     \textsize{11pt}{\textbf{#1}} & \textsize{11pt}{\text{#2}} \\
+%     \textit{#3}                  & \textit{#4}
+%   \end{tabular*}
+% }
+
+% \newcommand{\cvProjectHeading}[3]{%
+%   % TODO: implement
+% }
+
+% \newcommand{\cvFooter}[1][\today]{
+%   % TODO: \centerline{\small\emph{Updated on #1}}
+% }
+
+% \newenvironment{\cvList}{
+%   \begin{itemize}
+% }{
+%   \end{itemize}
+% }
