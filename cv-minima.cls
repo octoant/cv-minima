@@ -162,9 +162,10 @@
   \end{itemize}%
 }
 
-%% Reset the first & second item-level labels values
+%% Reset list items labels value
 \renewcommand{\labelitemi}{}
 \renewcommand{\labelitemii}{\textbullet}
+\renewcommand{\labelitemiii}{\(\circ\)}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Default Values
