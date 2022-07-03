@@ -45,12 +45,12 @@
 \setlength{\tabcolsep}{0pt}
 
 %% Adjust page margins
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.0in}
+\addtolength{\oddsidemargin}{-0.75in}
+\addtolength{\evensidemargin}{-0.75in}
+\addtolength{\textwidth}{1.5in}
 
-\addtolength{\topmargin}{-0.5in}
-\addtolength{\textheight}{1.0in}
+\addtolength{\topmargin}{-0.75in}
+\addtolength{\textheight}{1.5in}
 
 %% Customize the \section command
 \titleformat{\section}{\large\scshape}{}{0}{}[\titlerule]
@@ -67,6 +67,11 @@
 %% Customize the \underline command
 \renewcommand{\underline}[1]{%
   \uline{\phantom{#1}}\llap{\contour{white}{#1}}%
+}
+
+%% Set specified fontsize to the provided text
+\newcommand{\fsize}[2]{%
+  {\fontsize{#1}{\baselineskip} #2}%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -117,7 +122,7 @@
   \end{center}%
 }
 
-\newcommand{\cvHeading}[2][\undefined]{%
+\newcommand{\cvSection}[2][\undefined]{%
   \ifx#1\undefined%
     \section*{#2}%
   \else%
@@ -126,45 +131,40 @@
 }
 
 \newcommand{\cvFooter}[1][\today]{%
-  % TODO: implement...
+  % TODO: \centerline{\small\emph{Updated on #1}}%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Special Environments Definitions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newenvironment{cvHeadingList}{
-  \begin{itemize}
-}{
-  \end{itemize}
+\newenvironment{cvHeadingList}{%
+  \newcommand{\cvCustomHeading}[4]{%
+    \item \fsize{11pt}{\textbf{##1} \hfill ##2} \newline \textit{##3} \hfill \textit{##4} \par%
+  }%
+  \newcommand{\cvProjectHeading}[3]{%
+    \item \fsize{11pt}{\textbf{##1}} \(|\) \textit{##2} \hfill \textit{##3} \par%
+  }%
+  \begin{itemize}[leftmargin=0pt,itemsep=0pt,topsep=0pt]%
+}{%
+  \end{itemize}%
 }
 
-\newenvironment{cvList}{
-  \begin{itemize}
-}{
-  \end{itemize}
+\newenvironment{cvList}{%
+  \newcommand{\cvItem}{%
+    \item%
+  }%
+  \begin{itemize}[leftmargin=16pt,itemsep=0pt,topsep=-2pt]%
+}{%
+  \end{itemize}%
 }
 
-% \newcommand{\textsize}[2]{%
-%   {\fontsize{#1}{\baselineskip}\selectfont{#2}}%
-% }
+%% Reset the first & second item-level labels values
+\renewcommand{\labelitemi}{}
+\renewcommand{\labelitemii}{\textbullet}
 
-% \newcommand{\cvSubHeading}[4]{%
-%   \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-%     \textsize{11pt}{\textbf{#1}} & \textsize{11pt}{\text{#2}} \\
-%     \textit{#3}                  & \textit{#4}
-%   \end{tabular*}
-% }
-
-% \newcommand{\cvProjectHeading}[3]{%
-%   % TODO: implement
-% }
-
-% \newcommand{\cvFooter}[1][\today]{
-%   % TODO: \centerline{\small\emph{Updated on #1}}
-% }
-
-% \newenvironment{\cvList}{
-%   \begin{itemize}
-% }{
-%   \end{itemize}
-% }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Default Values
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\name{First Last}
+\contacts{0 (000) 000 0000}{example@mail.com}{username}{username}{username}
+\location{Postal-Code Street, District, City or Town, Region, Republic}
