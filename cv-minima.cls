@@ -20,28 +20,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Required Packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\RequirePackage{amsmath,amssymb}        % for math
-\RequirePackage{contour}                % for contour plots
-\RequirePackage{enumitem}               % for lists
-\RequirePackage{hyperref}               % for hyperlinks
-\RequirePackage{latexsym}               % for additional symbols
-\RequirePackage{fontawesome5}           % for icons
-\RequirePackage{xcolor}                 % for colors
-\RequirePackage{titlesec}               % for customize section
-\RequirePackage{fancyhdr}               % for page layout
+\RequirePackage{amsmath,amssymb}  % for math
+\RequirePackage{contour}          % for contour plots
+\RequirePackage{enumitem}         % for lists
+\RequirePackage{hyperref}         % for hyperlinks
+\RequirePackage{latexsym}         % for additional symbols
+\RequirePackage{fontawesome5}     % for icons
+\RequirePackage{xcolor}           % for colors
+\RequirePackage{titlesec}         % for customize section
+\RequirePackage{fancyhdr}         % for page layout
 \RequirePackage[empty]{fullpage}
-\RequirePackage[normalem]{ulem}         % for customize underline
-\RequirePackage[russian,english]{babel} % for locales
-\RequirePackage[utf8]{inputenc}         % for encoding
-\RequirePackage[T1]{fontenc}            % for fonts
+\RequirePackage[normalem]{ulem}   % for customize underline
+\RequirePackage[english]{babel}   % for locales
+\RequirePackage[utf8]{inputenc}   % for encoding
+\RequirePackage[T1]{fontenc}      % for fonts
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Page Layout and Settings
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagestyle{fancy}                       % apply fancy layout
-\fancyhf{}                              % clear all header and footer
+\pagestyle{fancy}                 % apply fancy layout
+\fancyhf{}                        % clear all header and footer
 \setlength{\footskip}{4.8pt}
-\setlength{\parindent}{0pt}             % clear all indentation
+\setlength{\parindent}{0pt}       % clear all indentation
 \setlength{\tabcolsep}{0pt}
 
 %% Adjust page margins
@@ -60,10 +60,8 @@
 %% Hide header and footer lines
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-
 %% Reset underline depth
 \renewcommand{\ULdepth}{1.2pt}
-
 %% Customize the \underline command
 \renewcommand{\underline}[1]{%
   \uline{\phantom{#1}}\llap{\contour{white}{#1}}%
@@ -77,32 +75,38 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Additional Macros & Commands Definitions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\def\iconColor{black}
+\def\iconColor{black} % default icon color
 
+%% Get the icon by name, available here: docs/fontawesome5.pdf
+\newcommand{\icon}[2][\iconColor]{%
+  \textcolor{#1}{\faIcon{#2}}%
+}
+%% Set the default icon color
 \newcommand{\setIconColor}[1]{%
   \def\iconColor{#1}%
 }
 
+%% Provide to set variable value
 \newcommand{\name}[1]{%
   \def\@name{\huge\scshape\textbf{#1}}%
 }
 \newcommand{\location}[1]{%
-  \def\@location{\textcolor{\iconColor}{\faIcon{map-marker-alt}} #1}%
+  \def\@location{\icon{map-marker-alt} #1}%
 }
 \newcommand{\phone}[1]{%
-  \def\@phone{\textcolor{\iconColor}{\faIcon{phone-alt}} #1}%
+  \def\@phone{\icon{phone-alt} #1}%
 }
 \newcommand{\mail}[1]{%
-  \def\@mail{\textcolor{\iconColor}{\faIcon{envelope}} \href{mailto:#1}{#1}}%
+  \def\@mail{\icon{envelope} \href{mailto:#1}{#1}}%
 }
 \newcommand{\linkedin}[1]{%
-  \def\@linkedin{\textcolor{\iconColor}{\faIcon{linkedin}} \href{https://linkedin.com/in/#1}{\underline{linkedin.com/in/#1}}}%
+  \def\@linkedin{\icon{linkedin} \href{https://linkedin.com/in/#1}{\underline{linkedin.com/in/#1}}}%
 }
 \newcommand{\telegram}[1]{%
-  \def\@telegram{\textcolor{\iconColor}{\faIcon{telegram}} \href{https://telegram.me/#1}{\underline{telegram.me/#1}}}%
+  \def\@telegram{\icon{telegram} \href{https://telegram.me/#1}{\underline{telegram.me/#1}}}%
 }
 \newcommand{\github}[1]{%
-  \def\@github{\textcolor{\iconColor}{\faIcon{github}} \href{https://github.com/#1}{\underline{github.com/#1}}}%
+  \def\@github{\icon{github} \href{https://github.com/#1}{\underline{github.com/#1}}}%
 }
 \newcommand{\contacts}[5]{%
   \phone{#1} \mail{#2} \linkedin{#3} \telegram{#4} \github{#5}%
@@ -111,11 +115,11 @@
 \newcommand{\cvHeader}{%
   \begin{center}%
     \vbox{\@name} \smallskip%
-    \vbox{\@location} \smallskip%
+    \vbox{\@location} \vspace{1pt}%
 
     \mbox{\@phone} \space%
     \mbox{\@mail} \space%
-    \mbox{\@linkedin} \smallskip%
+    \mbox{\@linkedin} \vspace{1pt}%
 
     \mbox{\@telegram} \space%
     \mbox{\@github}%
@@ -126,12 +130,12 @@
   \ifx#1\undefined%
     \section*{#2}%
   \else%
-    \section*{\parbox[b]{12pt}{\centerline{\normalsize\textcolor{\iconColor}{#1}}} #2}%
+    \section*{\parbox[b]{12pt}{\centerline{\normalsize\icon{#1}}} #2}%
   \fi%
 }
 
 \newcommand{\cvFooter}[1][\today]{%
-  % TODO: \centerline{\small\emph{Updated on #1}}%
+  \vfill\centerline{\small\emph{Updated on #1}}%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
