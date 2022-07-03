@@ -154,8 +154,8 @@
 }
 
 \newenvironment{cvList}{%
-  \newcommand{\cvItem}{%
-    \item%
+  \newcommand{\cvItem}[1][\undefined]{%
+    \item \ifx##1\undefined\else\textbf{##1:}\fi%
   }%
   \begin{itemize}[leftmargin=16pt,itemsep=0pt,topsep=-2pt]%
 }{%
