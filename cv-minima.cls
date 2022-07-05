@@ -1,4 +1,4 @@
-%% CV-Minima Professional LaTeX template
+%% CV-Minima Professional LaTeX Template
 %%
 %% Copyright (C) 2022 Bobur Zakirov <bobur.octo@gmail.com>
 %%
@@ -20,28 +20,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Required Packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\RequirePackage{amsmath,amssymb}  % for math
-\RequirePackage{contour}          % for contour plots
-\RequirePackage{enumitem}         % for lists
-\RequirePackage{hyperref}         % for hyperlinks
-\RequirePackage{latexsym}         % for additional symbols
-\RequirePackage{fontawesome5}     % for icons
-\RequirePackage{xcolor}           % for colors
-\RequirePackage{titlesec}         % for customize section
-\RequirePackage{fancyhdr}         % for page layout
+\RequirePackage{fancyhdr}                 % for page layout
 \RequirePackage[empty]{fullpage}
-\RequirePackage[normalem]{ulem}   % for customize underline
-\RequirePackage[english]{babel}   % for locales
-\RequirePackage[utf8]{inputenc}   % for encoding
-\RequirePackage[T1]{fontenc}      % for fonts
+\RequirePackage{amsmath}                  % for maths
+\RequirePackage{amssymb}                  % for math symbols
+\RequirePackage{latexsym}                 % for additional symbols
+\RequirePackage{xcolor}                   % for colors
+\RequirePackage{hyperref}                 % for hyperlinks
+\RequirePackage{enumitem}                 % for lists
+\RequirePackage{fontawesome5}             % for icons
+\RequirePackage{contour}                  % for contour plots
+\RequirePackage[normalem]{ulem}           % for customize underline
+\RequirePackage{titlesec}                 % for customize section
+\RequirePackage[russian,english]{babel}   % for locales
+\RequirePackage[utf8]{inputenc}           % for encoding
+\RequirePackage[T1]{fontenc}              % for fonts
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Page Layout and Settings
+%% Page Layout and Additional Settings
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagestyle{fancy}                 % apply fancy layout
-\fancyhf{}                        % clear all header and footer
+\pagestyle{fancy}             % apply fancy page layout
+\fancyhf{}                    % clear all header/footer fields
 \setlength{\footskip}{4.8pt}
-\setlength{\parindent}{0pt}       % clear all indentation
+\setlength{\parindent}{0pt}   % clear all indentation
 \setlength{\tabcolsep}{0pt}
 
 %% Adjust page margins
@@ -52,17 +53,12 @@
 \addtolength{\topmargin}{-0.75in}
 \addtolength{\textheight}{1.5in}
 
-%% Customize the \section command
-\titleformat{\section}{\large\scshape}{}{0}{}[\titlerule]
-%% Resize the \section command spacings
-\titlespacing{\section}{0pt}{*1.2}{*1.2}
-
 %% Hide header and footer lines
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 %% Reset underline depth
 \renewcommand{\ULdepth}{1.2pt}
-%% Customize the \underline command
+%% Customize the underline command
 \renewcommand{\underline}[1]{%
   \uline{\phantom{#1}}\llap{\contour{white}{#1}}%
 }
@@ -72,20 +68,23 @@
   {\fontsize{#1}{\baselineskip} #2}%
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Additional Macros & Commands Definitions
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\def\iconColor{black} % default icon color
-
+%% Set the default icon color
+\newcommand{\cvColor}[1]{%
+  \def\@cvColor{#1}%
+}
 %% Get the icon by name, available here: docs/fontawesome5.pdf
-\newcommand{\icon}[2][\iconColor]{%
+\newcommand{\icon}[2][\@cvColor]{%
   \textcolor{#1}{\faIcon{#2}}%
 }
-%% Set the default icon color
-\newcommand{\setIconColor}[1]{%
-  \def\iconColor{#1}%
-}
 
+%% Customize the section command
+\titleformat{\section}{\large\scshape}{}{0}{}[\color{\@cvColor}\titlerule]
+%% Resize the section command spacings
+\titlespacing{\section}{0pt}{*1.2}{*1.2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Command Definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Provide to set variable value
 \newcommand{\name}[1]{%
   \def\@name{\huge\scshape\textbf{#1}}%
@@ -126,6 +125,10 @@
   \end{center}%
 }
 
+\newcommand{\cvFooter}[1][\today]{%
+  \vfill\centering{\small\textcolor{\@cvColor}{Updated on #1}}%
+}
+
 \newcommand{\cvSection}[2][\undefined]{%
   \ifx#1\undefined%
     \section*{#2}%
@@ -134,19 +137,15 @@
   \fi%
 }
 
-\newcommand{\cvFooter}[1][\today]{%
-  \vfill\centerline{\small\emph{Updated on #1}}%
-}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Special Environments Definitions
+%% Special Environment Definitions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newenvironment{cvHeadingList}{%
   \newcommand{\cvCustomHeading}[4]{%
-    \item \fsize{11pt}{\textbf{##1} \hfill ##2} \newline \textit{##3} \hfill \textit{##4} \par%
+    \item \fsize{11pt}{\textbf{##1}} \hfill \textbf{##2} \newline \textit{##3} \hfill \textit{##4} \par%
   }%
   \newcommand{\cvProjectHeading}[3]{%
-    \item \fsize{11pt}{\textbf{##1}} \(|\) \textit{##2} \hfill \textit{##3} \par%
+    \item \fsize{11pt}{\textbf{##1}} \(|\) \textit{##2} \hfill \textbf{##3} \par%
   }%
   \begin{itemize}[leftmargin=0pt,itemsep=0pt,topsep=0pt]%
 }{%
@@ -165,11 +164,12 @@
 %% Reset list items labels value
 \renewcommand{\labelitemi}{}
 \renewcommand{\labelitemii}{\textbullet}
-\renewcommand{\labelitemiii}{\(\circ\)}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Default Values
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cvColor{black}
+%% Header variables
 \name{First Last}
 \contacts{0 (000) 000 0000}{example@mail.com}{username}{username}{username}
 \location{Postal-Code Street, District, City or Town, Region, Republic}
