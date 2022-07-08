@@ -56,6 +56,9 @@
 %% Hide header and footer lines
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+
+%% Set default font-family to Charter
+\renewcommand{\familydefault}{bch}
 %% Reset underline depth
 \renewcommand{\ULdepth}{1.2pt}
 %% Customize the underline command
