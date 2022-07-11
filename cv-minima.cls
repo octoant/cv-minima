@@ -148,11 +148,20 @@
     \item \fsize{11pt}{\textbf{##1}} \hfill \textbf{##2} \newline \textit{##3} \hfill \textit{##4} \par%
   }%
   \newcommand{\cvProjectHeading}[3]{%
-    \item \fsize{11pt}{\textbf{##1}} \(|\) \textit{##2} \hfill \textbf{##3} \par%
+    \item \fsize{11pt}{\textbf{##1}} \raisebox{0.2ex}{|} \textit{##2} \hfill \textbf{##3} \par%
   }%
-  \begin{itemize}[leftmargin=0pt,itemsep=0pt,topsep=0pt]%
+  \begin{itemize}[leftmargin=0pt,itemsep=2pt,topsep=0pt]%
 }{%
   \end{itemize}%
+}
+
+\newenvironment{cvSkillsList}{%
+  \newcommand{\cvItem}[2]{%
+    \textbf{##1:} & {##2} \\[1pt]%
+  }%
+  \begin{tabular}{p{0.2\textwidth}p{0.8\textwidth}}%
+}{%
+  \end{tabular}%
 }
 
 \newenvironment{cvList}{%
