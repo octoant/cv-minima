@@ -1,3 +1,60 @@
-\cvSection[\faIcon{folder-minus}]{Projects}
+\cvSection[folder-open]{Projects}
 
-\noindent some text
+\begin{cvHeadingList}
+
+  \cvProjectHeading{Automated UI Tests}{Java, JUnit, Selenium, Selenoid, Docker}{May 2022}
+
+  \begin{cvList}
+    \cvItem Generated use cases, developed test coverage based on
+      them, and conducted functional testing of the website interface.
+    \cvItem Utilized Selenide framework (wrapper for Selenium
+      WebDriver) to write an automated UI tests and Selenoid (Selenium
+      Grid alternative) to run different versions of browsers in
+      docker containers. Also used the Allure framework to generate
+      test reports.
+  \end{cvList}
+
+  \cvProjectHeading{Image Rotator}{Assembly, C}{December 2021}
+
+  \begin{cvList}
+    \cvItem Created an application in C that allows to rotate bitmap
+      images by 90 degrees counterclockwise.
+    \cvItem Developed a new module called sepia filter that makes an
+      image with vivid colors look like an old. The module was written
+      in assembly language to improve the performance of the program.
+      Most of graphical editors include a filter like this.
+  \end{cvList}
+
+  \cvProjectHeading{Point-Hit Checker}{Java, Spring, Oracle, JavaScript, React}{December 2020}
+
+  \begin{cvList}
+    \cvItem Developed a web-application using Spring Boot and React
+      that checks if a point falls into the given area on the
+      coordinate plane. The interaction between the back-end and
+      front-end levels was organized through the REST API.
+    \cvItem Supported token based authentication with JWT using Spring
+      Security to keep the user logged in and prevent unauthorized
+      access.
+    \cvItem Used Spring Data with Hibernate to access the database
+      managed by Oracle DBMS, where stored all verification results.
+  \end{cvList}
+
+  \cvProjectHeading{Collection Manager}{Java, JavaFX, PostgreSQL}{April 2020}
+
+  \begin{cvList}
+    \cvItem Designed a console application that implements interactive
+      management of a collection of objects stored in a CSV file.
+    \cvItem Devided the program into client and server modules. The
+      server module executes commands for managing the collection and
+      the client module interactively reads commands, passes them to
+      the server for execution, and displays the results of execution.
+    \cvItem Improved server performance by adding support for
+      multi-threaded request processing and using a database instead
+      of a CSV file.
+    \cvItem Used JavaFX to create a GUI for the client module that
+      supports commands to manipulate the collection. The GUI also
+      supports internationalism and localization for the following
+      languages: English, Spanish (Costa Rica), Russian, and Belarusian.
+  \end{cvList}
+
+\end{cvHeadingList}
